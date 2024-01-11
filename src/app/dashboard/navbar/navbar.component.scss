@@ -1,0 +1,109 @@
+span {
+    align-content: center;
+    margin-left: 0.8rem;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar {
+    background: linear-gradient(-20deg, #616161 0%, #9bc5c3 100%); 
+    // linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+    color: #000;
+    display: flex;
+    align-items: center;
+    height: 3rem;
+}
+
+mat-icon {
+    font-size: 18px;
+}
+
+.btn-toolbar {
+    color: #fafafa;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.btn-toolbar:hover {
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.504);
+}
+
+mat-icon {
+    font-size: 25px;
+}
+mat-drawer {
+    width: 220px;
+    background:  linear-gradient(-20deg, #616161 0%, #9bc5c3 100%); 
+    // linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+    // linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+    border: 0;
+    color: aliceblue;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
+}
+
+.title-sidenav  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 26px;
+    color: #000;
+}
+
+
+mat-divider{
+    margin: auto;
+    color: aliceblue;
+    width: 90%;
+    margin-bottom: 1rem;
+}
+
+.example-container {
+    height: calc(100% - 50px);
+}
+
+mat-drawer-content{
+    padding-left: 1rem;
+}
+
+.mat-mdc-list-item{
+    width: 100%;
+    padding: 0.2rem;
+}
+
+.btn-list{
+    display: flex;
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background: none;
+    cursor: pointer;
+}
+
+.item-list:hover{
+    background-color: rgba(255, 255, 255, 0.248);
+
+    .btn-list:hover{
+        color: #fafafa;
+    }
+}

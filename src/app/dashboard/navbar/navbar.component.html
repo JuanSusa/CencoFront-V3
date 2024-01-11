@@ -1,0 +1,52 @@
+<mat-toolbar>
+    <button mat-icon-button class="btn-toolbar" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{ title }}</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="btn-toolbar">
+        <mat-icon>perm_identity</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container">
+    <mat-drawer #sidenav mode="side" opened>
+        <mat-nav-list>
+
+            <span class="title-sidenav">Cencoe</span>
+
+
+            <mat-divider></mat-divider>
+
+            <mat-list-item class="item-list">
+                <button mat-icon-button class="btn-list">
+                    <mat-icon>home</mat-icon>
+                    <span>Dashboard</span>
+                </button>
+            </mat-list-item>
+            <mat-list-item class="item-list">
+                <button mat-icon-button class="btn-list">
+                    <mat-icon>campaign</mat-icon>
+                    <span>Campañas</span>
+                </button>
+            </mat-list-item>
+            <mat-list-item class="item-list" routerLink="/src/app/navbar/pages/users/users.component.html"
+                routerLinkActive="router-link-active">
+                <button mat-icon-button class="btn-list">
+                    <mat-icon>group</mat-icon>
+                    <span>Usuarios</span>
+                </button>
+            </mat-list-item>
+            <mat-list-item class="item-list">
+                <button mat-icon-button class="btn-list">
+                    <mat-icon>group</mat-icon>
+                    <span>Reportes</span>
+                </button>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+
+    </mat-drawer-content>
+</mat-drawer-container>
