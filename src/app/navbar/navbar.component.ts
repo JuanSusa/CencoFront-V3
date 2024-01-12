@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 //Angular material
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { routes } from '../app.routes';
 
 
 
@@ -16,6 +17,20 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 })
 export class NavbarComponent {
 
-  title: string= 'Cencoe'
+  title: string = 'Cencoe'
+
+  public menuItems = routes
+    .map((route) => route.children ?? [])
+    .flat()
+    .filter((route) => route && route.path);
+
+
+  getIconItemMenu(index: number): string {
+
+    const icons = ['dashboard', 'campaign', 'group', 'group'];
+    return icons[index] || 'default-icon';
+
+  }
+
 
 }
