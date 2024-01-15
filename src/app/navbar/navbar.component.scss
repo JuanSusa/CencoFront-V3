@@ -44,6 +44,7 @@ mat-toolbar {
 mat-icon {
     font-size: 25px;
     color: #fafafa;
+    overflow: visible;
 }
 mat-drawer {
     width: 220px;
@@ -92,12 +93,12 @@ mat-drawer-content{
     display: flex;
     width: 100%;
     margin: auto;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    border: none;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    background: none;
+    // border: none;
+    // padding: 0.5rem;
+    // border-radius: 0.5rem;
+    // background: none;
     cursor: pointer;
 }
 
@@ -108,8 +109,6 @@ mat-drawer-content{
         color: #fafafa;
     }
 }
-
-
 
 .titleItem{
     display: flex;
@@ -124,3 +123,8 @@ mat-drawer-content{
 mat-drawer-content{
     padding: 8px 15px;
 }
+
+.mat-mdc-button {
+    width: 90%;
+}
+

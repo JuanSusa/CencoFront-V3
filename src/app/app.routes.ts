@@ -1,10 +1,11 @@
 import { Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
-import { UsersComponent } from './dashboard/pages/users/users.component';
+import { UsersComponent } from './dashboard/pages/users/list-users/users.component';
 
 export const routes: Routes = [
     {
         path: 'home',
+        title: 'Dashboard',
         loadComponent: () => import('./dashboard/dashboard.component').then((c)=>c.DashboardComponent),
         children:[
             {
@@ -20,7 +21,7 @@ export const routes: Routes = [
             {
                 path:'usuarios',
                 title: 'Usuarios',
-                loadComponent: () => import('./dashboard/pages/users/users.component').then((c) => c.UsersComponent)
+                loadComponent: () => import('./dashboard/pages/users/list-users/users.component').then((c) => c.UsersComponent)
             },
             {
                 path:'proveedores',

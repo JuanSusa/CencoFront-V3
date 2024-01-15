@@ -18,7 +18,7 @@
 
             @for (item of menuItems; track $index) {
             <mat-list-item class="item-list">
-                <button mat-icon-button class="btn-list" [routerLink]="item.path">
+                <button mat-button class="btn-list" [routerLink]="item.path" >
                     <mat-icon>{{getIconItemMenu($index) }}</mat-icon>
                     <span>{{item.title}}</span>
                 </button>

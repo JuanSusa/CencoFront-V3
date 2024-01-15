@@ -20,17 +20,28 @@ export class NavbarComponent {
   title: string = 'Cencoe'
 
   public menuItems = routes
-    .map((route) => route.children ?? [])
-    .flat()
-    .filter((route) => route && route.path);
+    .map((route) => [route, ...(route.children ?? [])])//^1
+    .flat()//^ 2
+    .filter((route) => route && route.path);//^3
 
 
   getIconItemMenu(index: number): string {
-
     const icons = ['dashboard', 'campaign', 'group', 'group'];
-    return icons[index] || 'default-icon';
+    return icons[index];
 
   }
 
 
 }
+
+
+
+/*COMENTARIOS
+^1 => mapeo sobre cada ruta, y de ahi se crea un nuevo array,
+        (...), operador de propagacion, crea un nuevo array que contiene la ruta principal y sus hijos
+
+^2 => aplana el array de arrays y lo convierte en un solo array
+
+^3 => filtra las rutas que no son nulas y las que tiene una propiedad 'path'
+
+*/
