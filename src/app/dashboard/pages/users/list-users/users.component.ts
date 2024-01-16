@@ -3,6 +3,9 @@ import { IUser } from '../models/user.model';
 import { Component, OnInit, inject } from '@angular/core';
 import { AngularMaterialModule } from '../../../../angular-material/angular-material.module';
 import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { adminTypePopUp } from '../../../main/main-types';
+import { ManageUsersComponent } from '../manage-users/manage-users.component';
 
 
 @Component({
@@ -19,6 +22,7 @@ export class UsersComponent implements OnInit {
   public displayedColumns = ['userId', 'name', 'direccion','email','edit'];//^2
   public isLoading = true; // Bandera para mostrar mensaje de carga
   public hasError = false; // Bandera para mostrar mensaje de error
+  private readonly _dialog = inject(MatDialog)
 
   ngOnInit(): void {
     // this._serviceUser.getAllUsers().subscribe(
@@ -33,6 +37,21 @@ export class UsersComponent implements OnInit {
     //   }
     // );
   }
+
+  manageUser(tipo: adminTypePopUp, userId?: number){
+    const modal = this._dialog.open(ManageUsersComponent, {
+      data: {tipo, campo: userId}
+    });
+
+    modal
+    .afterClosed()
+    .subscribe( result => {
+      console.log('se cerro el dialogo ')
+    });
+
+  }
+
+
 }
 
 

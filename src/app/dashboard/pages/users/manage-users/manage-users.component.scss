@@ -1,0 +1,46 @@
+
+
+.mat-mdc-card-title{
+    height: 40px;
+}
+
+.mat-mdc-card-subtitle{
+    margin-left: 1.5rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;   
+    width: 700px;   
+
+}
+
+.mat-card-content {
+    max-width: 600px; /* Puedes ajustar este valor según tus necesidades */
+    margin: 0 auto;   /* Centra el contenido en el centro */
+}
+
+.create-user {
+    &campos {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    max-width: 100%;   /* Asegura que el ancho máximo sea el 100% del contenedor padre */
+    margin: 0 auto;    /* Centra el contenido en el centro */
+}}
+
+
+// mat-form-field{
+//     width: 70%;
+// }
+
+// .campos{
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: start;
+//     width: 200px;
+// }
+
