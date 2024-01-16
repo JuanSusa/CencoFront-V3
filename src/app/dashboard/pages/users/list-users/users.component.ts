@@ -1,4 +1,4 @@
-import { ServiceUsersService } from '../services/service-users.service';
+import { UsersService,  } from '../services/userService.service';
 import { IUser } from '../models/user.model';
 import { Component, OnInit, inject } from '@angular/core';
 import { AngularMaterialModule } from '../../../../angular-material/angular-material.module';
@@ -17,8 +17,8 @@ import { ManageUsersComponent } from '../manage-users/manage-users.component';
 })
 export class UsersComponent implements OnInit {
 
-  private _serviceUser =inject(ServiceUsersService)
-  public users: IUser[] = [];//^1
+  public _serviceUser =inject(UsersService)
+  // public users: IUser[] = [];//^1
   public displayedColumns = ['userId', 'name', 'direccion','email','edit'];//^2
   public isLoading = true; // Bandera para mostrar mensaje de carga
   public hasError = false; // Bandera para mostrar mensaje de error

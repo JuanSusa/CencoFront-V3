@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -35,7 +36,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatInputModule,
     MatFormFieldModule,
     MatRadioModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTooltipModule
   ],
   exports: [
     MatSidenavModule,
@@ -50,7 +52,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatInputModule,
     MatFormFieldModule,
     MatRadioModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTooltipModule
   ]
 })
 export class AngularMaterialModule { }

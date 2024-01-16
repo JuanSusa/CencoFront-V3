@@ -9,8 +9,8 @@
 </mat-card>
 <mat-card class="content-table">
     <mat-card-content class="table">
-
-        <table mat-table [dataSource]="users" class="mat-elevation-z6">
+        @for (user of _serviceUser.users(); track user.userId) {}
+        <table mat-table class="mat-elevation-z6">
 
             <!-- Columna Id-->
             <ng-container matColumnDef="userId" >
