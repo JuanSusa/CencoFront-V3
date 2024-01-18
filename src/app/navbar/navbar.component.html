@@ -16,38 +16,62 @@
             <span class="title-sidenav">Cencoe</span>
             <mat-divider></mat-divider>
 
-            @for (item of menuItems; track $index) {
-            <mat-list-item class="item-list">
-                <button mat-button class="btn-list" [routerLink]="item.path" >
-                    <mat-icon>{{getIconItemMenu($index) }}</mat-icon>
-                    <span>{{item.title}}</span>
-                </button>
-            </mat-list-item>
-            }
-
-
-
-
-
-            <!-- <mat-list-item class="item-list">
-                <button mat-icon-button class="btn-list">
-                    <mat-icon>campaign</mat-icon>
+            <!-- Item Campaña -->
+            <mat-list-item class="item-list" routerLinkActive="active-link">
+                <button mat-button class="btn-list" routerLink="./campañas">
+                    <mat-icon class="icon">campaign</mat-icon>
                     <span>Campañas</span>
                 </button>
             </mat-list-item>
-            <mat-list-item class="item-list" routerLink="/src/app/navbar/pages/users/users.component.html"
-                routerLinkActive="router-link-active">
-                <button mat-icon-button class="btn-list">
-                    <mat-icon>group</mat-icon>
-                    <span>Usuarios</span>
+
+            <!-- Item Usuarios/Tipo documento -->
+            <mat-accordion class="accordion">
+
+                    <mat-expansion-panel class="accordion" (click)="toggleUsuariosPanel()" >
+                        <mat-expansion-panel-header class="panel-header">
+                            <mat-panel-title>
+                            <mat-icon class="icon">group</mat-icon>
+                                <span>Usuarios</span>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <mat-list-item class="item-list">
+                            <button mat-button routerLink="./usuarios">
+                                <mat-icon class="submenu-icon">person</mat-icon>
+                                <span>Ver Usuarios</span>
+                            </button>
+                        </mat-list-item>
+
+                        <mat-list-item class="item-list">
+                            <button mat-button routerLink="./tipo-documento">
+                                <mat-icon class="submenu-icon">another_icon</mat-icon>
+                                <span>Tipo Documento</span>
+                            </button>
+                        </mat-list-item>
+                      
+                    </mat-expansion-panel>
+            </mat-accordion>
+         
+
+
+
+
+            
+
+
+            <!-- Item Usuarios/Tipo documento -->
+            <mat-list-item class="item-list" routerLinkActive="active-link">
+                <button mat-button class="btn-list" routerLink="./proveedores">
+                    <mat-icon class="icon">group</mat-icon>
+                    <span>Proveedores</span>
                 </button>
             </mat-list-item>
-            <mat-list-item class="item-list">
-                <button mat-icon-button class="btn-list">
-                    <mat-icon>group</mat-icon>
-                    <span>Reportes</span>
+            <mat-list-item class="item-list" routerLinkActive="active-link">
+                <button mat-button class="btn-list" routerLink="./tipo-documento">
+                    <mat-icon class="icon">group</mat-icon>
+                    <span class="tipo-documento">Tipo Documento</span>
                 </button>
-            </mat-list-item> -->
+            </mat-list-item>
         </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content>

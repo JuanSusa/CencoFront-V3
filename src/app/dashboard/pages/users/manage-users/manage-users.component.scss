@@ -34,24 +34,33 @@ mat-icon {
     cursor: pointer;
     color: #ff0844;
     margin-left: 5px;
-  }
-  
-  mat-icon:hover {
-    color: #ffb199; /* Cambia el color cuando se pasa el ratón sobre el icono */
-  }
+}
 
-  mat-card-actions{
+mat-icon:hover {
+    color: #ffb199;
+    /* Cambia el color cuando se pasa el ratón sobre el icono */
+}
+
+mat-card-actions {
     justify-content: flex-end;
 
-    .btn-saved-dialog{
+
+    .btn-saved-dialog:not([disabled]) {
+        margin-right: 0.5rem;
         background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
         color: aliceblue;
+    }
 
-      }
-
-      .btn-cancel-dialog {
+    .btn-saved-dialog[disabled] {
         margin-right: 0.5rem;
-      }
-  }
+        background-color: #ccc;
+        color: #666;
 
-  
+    }
+
+    .btn-cancel-dialog {
+        background: linear-gradient(-22deg, #29323c 0%, #485563 100%);
+        color: aliceblue;
+        margin-right: 0.5rem;
+    }
+}

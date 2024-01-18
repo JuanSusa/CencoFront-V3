@@ -1,10 +1,11 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter, withViewTransitions } from '@angular/router';
-
-import { routes } from './app.routes';
+import { RouterLink, RouterLinkActive, RouterModule, provideRouter, withViewTransitions } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { HttpClientModule,  } from '@angular/common/http';
+
 import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
+import { routes } from './app.routes';
+import { MatListItem } from '@angular/material/list';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,7 +18,8 @@ export const appConfig: ApplicationConfig = {
 
     //Importaciones de modulos
     importProvidersFrom(
-      HttpClientModule
+      HttpClientModule,
+      
     )
   ]
 };

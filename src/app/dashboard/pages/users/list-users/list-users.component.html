@@ -9,54 +9,52 @@
 </mat-card>
 <mat-card class="content-table">
     <mat-card-content class="table">
-        @for (user of _serviceUser.users(); track user.userId) {}
-        <table mat-table class="mat-elevation-z6">
+
+        <table mat-table class="mat-elevation-z6" [dataSource]="user">
 
             <!-- Columna Id-->
-            <ng-container matColumnDef="userId" >
+            <ng-container matColumnDef="userId">
                 <th mat-header-cell *matHeaderCellDef class="table-header user-id"> No. </th>
                 <td mat-cell *matCellDef="let users"> {{users.userId}} </td>
             </ng-container>
 
             <!-- Columna Nombre -->
-            <ng-container matColumnDef="name" >
+            <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef class="table-header user-name"> Nombre </th>
                 <td mat-cell *matCellDef="let users"> {{users.userName}} {{users.userLastName}} </td>
             </ng-container>
 
             <!-- Columna Direccion -->
-            <ng-container matColumnDef="direccion" >
+            <ng-container matColumnDef="direccion">
                 <th mat-header-cell *matHeaderCellDef class="table-header user-addres"> Dirección </th>
                 <td mat-cell *matCellDef="let users"> {{users.userAddress}} </td>
             </ng-container>
 
             <!-- Columna Correo -->
-            <ng-container matColumnDef="email" >
+            <ng-container matColumnDef="email">
                 <th mat-header-cell *matHeaderCellDef class="table-header user-email"> Correo </th>
                 <td mat-cell *matCellDef="let users"> {{users.userEmail}} </td>
             </ng-container>
 
             <!-- Columna Acciones -->
-            <ng-container matColumnDef="edit" >
+            <ng-container matColumnDef="edit">
                 <th mat-header-cell *matHeaderCellDef class="table-header actions"> Editar </th>
-                <td mat-cell *matCellDef="let users"> 
-                    <button mat-raised-button>Ver detalles</button>
-
+                <td mat-cell *matCellDef="let users">
+                    <button mat-raised-button routerLink="['/usuario']"  >Ver detalles</button>
                 </td>
             </ng-container>
-
-           
-
+            
             <tr mat-header-row *matHeaderRowDef="displayedColumns" class="row-table"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+
         <!-- Mostrar mensaje de carga o error -->
         <div *ngIf="isLoading; else error">
             Cargando usuarios...
-          </div>
-          <ng-template #error>
+        </div>
+        <ng-template #error>
             Hubo un error al cargar los usuarios.
-          </ng-template>
+        </ng-template>
 
 
 

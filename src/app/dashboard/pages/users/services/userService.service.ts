@@ -5,10 +5,6 @@ import { Observable, catchError, delay, map, throwError } from 'rxjs';
 import { IUser, userResponse } from '../models/user.model';
 import { computeMsgId } from '@angular/compiler';
 
-interface State{
-  users: IUser[];
-  loading: boolean;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -18,35 +14,10 @@ export class UsersService {
   private _http = inject(HttpClient);
   private baseURL = 'http://localhost:8080/api/v2/cencoe'
 
-  #state = signal<State>({
-    loading: true,
-    users: []
-  });
 
-  public users = computed( () => this.#state().users);
-  public loading = computed( () => this.#state().loading);
-
-
-  constructor() {
-
-    this._http.get<userResponse>(`${this.baseURL}/usuarios`)
-    .pipe(delay(1500))
-    .subscribe( res => {
-      this.#state.set({
-        loading: false,
-        users : res.data
-      })
-
-    });
-   }
-
-
-
-
-
-
-
-
+  public getAllUsers(): Observable<userResponse>{
+    return this._http.get<userResponse>(`${this.baseURL}/usuarios`)
+  }
 
   // public getAllUsers(): Observable<IUser[]> {
   //   return this._http.get<IUser[]>(`${this.baseURL}/usuarios`).pipe(
@@ -57,9 +28,10 @@ export class UsersService {
   //   );
   // }
 
-  // public getAllUsers(): Observable<IUser[]>{
-  //   return this._http.get(`${this.baseURL}/usuarios`).pipe(
-  //     map(response => response as IUser[])
-  //   );
-  // }
+//   public getAllUsers(): Observable<IUser[]> {
+//     this._http.get(`${this.baseURL}/usuarios`).subscribe( resp => {
+//       console.log(resp)
+//     })
+    
+//   }
 }

@@ -29,7 +29,7 @@ export class ManageUsersComponent implements OnInit {
     userLastName: ['', Validators.required],
     userAddress: ['', [Validators.required, Validators.minLength(3)]],
     userPhone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^\d+$/)]],
-    userPassword: ['', [Validators.required, Validators.minLength(10), this.passwordValidator()]],
+    userPassword: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
     userState: [''],
     userTipoDocumento: ['']
   })
@@ -57,19 +57,18 @@ export class ManageUsersComponent implements OnInit {
     event.target.value = input.replace(/[^0-9]/g, '');//^6.3
   }
 
-  passwordValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const value: string = control.value;
+  //^7
+  passwordValidator(): ValidatorFn {//^7.1
+    return (control: AbstractControl): ValidationErrors | null => {//^7.2
+      const value: string = control.value;//^7.3
+      const passwordCriteria = /[a-zA-Z]+.*[0-9]+.*[A-Z]+/.test(value);//^7.4
   
-      // Verificar si la contraseña cumple con los criterios
-      const passwordCriteria = /[a-zA-Z]+.*[0-9]+.*[A-Z]+/.test(value);
-  
-      if (!passwordCriteria) {
-        // Devolver un objeto de error si la contraseña no cumple con los criterios
-        return { passwordRequirements: true };
+      if (!passwordCriteria) { //^7.5
+
+        return { passwordCriteria: true };
       }
   
-      // La contraseña es válida
+   
       return null;
     };
   }
@@ -90,5 +89,10 @@ export class ManageUsersComponent implements OnInit {
  *    6.2 => Se extrae el valor actual del campo (valor-entrada), y es asignado a la variable creada input.
  *    6.3 => se utliza el metodo replace() con una expresion regular -> ^: En el contexto de corchetes ([]), significa "no"; 0-9: Representa todos los dígitos del 0 al 9; /g: Realiza la sustitución de forma global, es decir, reemplaza todas las ocurrencias en la cadena.
  *           esta línea elimina todos los caracteres no numéricos del valor del campo de entrada y actualiza el campo de entrada con el nuevo valor sin caracteres no numéricos.
- *      
+ * ^7 => Metodo para hacer una validacion en un campo de entrada:
+ *    ^7.1 => ValidatorFn, funcion que un control y devuelve un mapa de errores si esta presente, de lo contrario null.
+ *    ^7.2 => toma como argumento una propiedad de tipo AbstractControl (control); ValidationErrors | null, es el tipo de retorno (obj de error o null).
+ *    ^7.3 => obtiene el valor del control (cadena del campo de entrada).
+ *    ^7.4 => a 'passwordCriteria' se le asigna una expresion regular con ciertos criterios; 'test(value)', verifica que el valor del campo cumpla con esos criterios.
+ *    ^7.5 => condicion que verifica si 'passwordCriteria' es false, quiere decir que no cumple con los criterios y retorna un obj de errores
  */

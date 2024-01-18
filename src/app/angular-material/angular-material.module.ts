@@ -16,6 +16,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTooltipModule } from '@angular/material/tooltip';
+// import {MatMenuModule} from '@angular/material/menu';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -37,7 +39,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatFormFieldModule,
     MatRadioModule,
     MatGridListModule,
-    MatTooltipModule
+    MatTooltipModule,
+    // MatMenuModule
+    MatExpansionModule
   ],
   exports: [
     MatSidenavModule,
@@ -53,7 +57,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatFormFieldModule,
     MatRadioModule,
     MatGridListModule,
-    MatTooltipModule
+    MatTooltipModule,
+    // MatMenuModule
+    MatExpansionModule
   ]
 })
 export class AngularMaterialModule { }

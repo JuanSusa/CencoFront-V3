@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 
 
 //Angular material
@@ -11,7 +11,7 @@ import { routes } from '../app.routes';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [AngularMaterialModule, RouterModule],
+  imports: [AngularMaterialModule, RouterModule, RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
@@ -19,17 +19,26 @@ export class NavbarComponent {
 
   title: string = 'Cencoe'
 
-  public menuItems = routes
-    .map((route) => [route, ...(route.children ?? [])])//^1
-    .flat()//^ 2
-    .filter((route) => route && route.path);//^3
+  usuariosPanelOpened = false;
+  panelOpenState = false;
 
-
-  getIconItemMenu(index: number): string {
-    const icons = ['dashboard', 'campaign', 'group', 'group'];
-    return icons[index];
-
+  toggleUsuariosPanel() {
+    this.usuariosPanelOpened = !this.usuariosPanelOpened;
   }
+
+  // public menuItems = routes
+  //   .map((route) => [route, ...(route.children ?? [])])//^1
+  //   .flat()//^ 2
+  //   .filter((route) => route && route.path);//^3
+
+
+
+
+  // getIconItemMenu(index: number): string {
+  //   const icons = ['dashboard', 'campaign', 'group', 'group'];
+  //   return icons[index];
+
+  // }
 
 
 }

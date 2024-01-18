@@ -1,44 +1,45 @@
 import { Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
-import { UsersComponent } from './dashboard/pages/users/list-users/users.component';
+import { ListUsersComponent } from './dashboard/pages/users/list-users/list-users.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
-        path: 'home',
-        title: 'Dashboard',
-        loadComponent: () => import('./dashboard/dashboard.component').then((c)=>c.DashboardComponent),
-        children:[
+        path: 'inicio',
+        loadComponent: () => import('./dashboard/dashboard.component').then((c) => c.DashboardComponent),
+
+        children: [
             {
-                path:'campañas',
-                title: 'Campañas',
+                path: 'usuarios',
+                loadComponent: () => import('./dashboard/pages/users/list-users/list-users.component').then((c) => c.ListUsersComponent)
+
+            },
+            {
+                path: 'campañas',
                 loadComponent: () => import('./dashboard/pages/campaigns/campaigns.component').then((c) => c.CampaignsComponent)
+
             },
             {
-                path:'clientes',
-                title: 'Clientes',
-                loadComponent: () => import('./dashboard/pages/customers/customers.component').then((c) => c.CustomersComponent)
-            },
-            {
-                path:'usuarios',
-                title: 'Usuarios',
-                loadComponent: () => import('./dashboard/pages/users/list-users/users.component').then((c) => c.UsersComponent)
-            },
-            {
-                path:'proveedores',
-                title: 'Proveedores',
+                path: 'proveedores',
                 loadComponent: () => import('./dashboard/pages/providers/providers.component').then((c) => c.ProvidersComponent)
-            }
-            
-        ]  
+
+            },
+            {
+                path: 'tipo-documento',
+                loadComponent: () => import('./dashboard/pages/tipodocumento/tipodocumento.component').then((c) => c.TipodocumentoComponent)
+
+            },
+
+        ]
 
     },
     {
         path: '',
-        redirectTo: '/home',
+        redirectTo: '/inicio',
         pathMatch: 'full'
     },
     {
-        path:'**',
-        redirectTo:'home'
+        path: '**',
+        redirectTo: 'inicio'
     }
 ];
