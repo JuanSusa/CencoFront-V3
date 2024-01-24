@@ -1,0 +1,61 @@
+<mat-toolbar class="mat-elevation-z6">
+    <button mat-icon-button class="btn-toolbar" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{ title }}</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="btn-toolbar">
+        <mat-icon>perm_identity</mat-icon>
+    </button>
+</mat-toolbar>
+
+
+<mat-drawer-container class="example-container">
+   
+    <mat-drawer #sidenav mode="side">
+        <mat-nav-list>
+            <span class="title-sidenav">Cencoe</span>
+            <mat-divider></mat-divider>
+
+            <ng-container *ngFor="let menuItem of menuItems()">
+                <ng-container *ngIf="!menuItem.subMenu">
+                    <!-- Elemento del menú sin submenú -->
+                    <mat-list-item [routerLink]="menuItem.route" routerLinkActive="active">
+                        <mat-icon matListItemIcon>{{ menuItem.icon }}</mat-icon>
+                        <span matListItemTitle>{{ menuItem.label }}</span>
+                    </mat-list-item>
+                </ng-container>
+
+                <ng-container *ngIf="menuItem.subMenu">
+                    <!-- Elemento del menú con submenú -->
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                                <mat-list-item>
+                                    <mat-icon matListItemIcon>{{ menuItem.icon }}</mat-icon>
+                                    <span matListItemTitle>{{ menuItem.label }}</span>
+                                </mat-list-item>
+                        </mat-expansion-panel-header>
+                        <mat-list>
+                            <mat-list-item *ngFor="let subMenuItem of menuItem.subMenu" [routerLink]="subMenuItem.route"
+                                routerLinkActive="active">
+                                <mat-icon matListItemIcon>{{ subMenuItem.icon }}</mat-icon>
+                                <span matListItemTitle>{{ subMenuItem.label }}</span>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-expansion-panel>
+                </ng-container>
+            </ng-container>
+
+            <!-- <mat-list-item class="item-list" routerLinkActive="active-link">
+                <button mat-button class="btn-list" routerLink="">
+                    <mat-icon class="icon">group</mat-icon>
+                    <span class="tipo-documento">Tipo Documento</span>
+                </button>
+            </mat-list-item>-->
+        </mat-nav-list>
+    </mat-drawer>
+    
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

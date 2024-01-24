@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, booleanAttribute, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { adminPopUp } from '../../../main/main-types';
+import { adminPopUp } from '../../../../core/main/main-types';
 import { AngularMaterialModule } from '../../../../angular-material/angular-material.module';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';

@@ -2,8 +2,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { Observable, catchError, delay, map, throwError } from 'rxjs';
-import { IUser, userResponse } from '../models/user.model';
+import { ApiResponse  } from '../../../../core/models/user.model';
 import { computeMsgId } from '@angular/compiler';
+import { environment } from '../../../../../environments/environment';
 
 
 @Injectable({
@@ -12,11 +13,9 @@ import { computeMsgId } from '@angular/compiler';
 export class UsersService {
 
   private _http = inject(HttpClient);
-  private baseURL = 'http://localhost:8080/api/v2/cencoe'
 
-
-  public getAllUsers(): Observable<userResponse>{
-    return this._http.get<userResponse>(`${this.baseURL}/usuarios`)
+  public getAllUsers(): Observable<ApiResponse>{
+    return this._http.get<ApiResponse>(`${environment.api}/usuarios`)
   }
 
   // public getAllUsers(): Observable<IUser[]> {

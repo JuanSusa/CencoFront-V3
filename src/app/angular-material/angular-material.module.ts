@@ -16,8 +16,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTooltipModule } from '@angular/material/tooltip';
-// import {MatMenuModule} from '@angular/material/menu';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 
@@ -40,7 +40,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatRadioModule,
     MatGridListModule,
     MatTooltipModule,
-    // MatMenuModule
+    MatMenuModule,
     MatExpansionModule
   ],
   exports: [
@@ -58,7 +58,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatRadioModule,
     MatGridListModule,
     MatTooltipModule,
-    // MatMenuModule
+    MatMenuModule,
     MatExpansionModule
   ]
 })

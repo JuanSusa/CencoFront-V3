@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
-import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { Component, HostListener, ViewChild, computed, signal } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 
 
 //Angular material
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
-import { routes } from '../app.routes';
+import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
+import { CommonModule } from '@angular/common';
+import { MenuItem, menuItems } from './menu-data';
 
 
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [AngularMaterialModule, RouterModule, RouterLink, RouterLinkActive],
+  imports: [AngularMaterialModule, RouterModule, RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
@@ -19,29 +21,48 @@ export class NavbarComponent {
 
   title: string = 'Cencoe'
 
-  usuariosPanelOpened = false;
-  panelOpenState = false;
+  menuItems = signal<MenuItem[]>(menuItems);
+  
+  collapsed = signal(false);
+  widthMenuNav = computed(() => this.collapsed() ? '65px' : '250px');
+  imageSize = computed(() => this.collapsed() ? '32px' : '100px');
 
-  toggleUsuariosPanel() {
-    this.usuariosPanelOpened = !this.usuariosPanelOpened;
+  @ViewChild('sidenav') sidenav!: MatSidenav;
+
+  ngAfterViewInit() {
+    // La referencia al sidenav está disponible aquí
+    console.log(this.sidenav);
   }
 
-  // public menuItems = routes
-  //   .map((route) => [route, ...(route.children ?? [])])//^1
-  //   .flat()//^ 2
-  //   .filter((route) => route && route.path);//^3
 
 
 
+  // usuariosPanelOpened = false;
+  // panelOpenState = false;
+  // closedMenu = false;
 
-  // getIconItemMenu(index: number): string {
-  //   const icons = ['dashboard', 'campaign', 'group', 'group'];
-  //   return icons[index];
-
+  // showSubmenu() {
+  //   this.usuariosPanelOpened = !this.usuariosPanelOpened;
   // }
 
+  showMenu(){
+    this.sidenav.toggle();
+  }
 
-}
+  
+
+    // @ViewChild(MatDrawer) drawer!: MatDrawer;
+    // private screenSizeThreshold = 768; 
+
+    // @HostListener('window:resize', ['$event'])
+    // onResize(event: Event) {
+    //   if (window.innerWidth < this.screenSizeThreshold) {
+
+    //     this.drawer.close();
+    //   }
+    // }
+
+  }
 
 
 

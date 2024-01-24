@@ -1,80 +1,51 @@
-<mat-toolbar>
-    <button mat-icon-button class="btn-toolbar" (click)="sidenav.toggle()">
+<mat-toolbar class="mat-elevation-z6">
+    <button mat-icon-button class="btn-toolbar" (click)="collapsed.set(!collapsed())">
         <mat-icon>menu</mat-icon>
     </button>
     <span>{{ title }}</span>
     <span class="example-spacer"></span>
     <button mat-icon-button class="btn-toolbar">
         <mat-icon>perm_identity</mat-icon>
-        <!-- <mat-icon>expand_more</mat-icon> -->
+    </button>
+    <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>settings</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="./tipo-documento">Tipo Documentos</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+    <button mat-icon-button class="btn-toolbar">
+
+
     </button>
 </mat-toolbar>
 
-<mat-drawer-container class="example-container">
-    <mat-drawer #sidenav mode="side" opened>
+<!-- Menu del navegador -->
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav class="sidenav" opened mode="side" [style.width]="widthMenuNav()" class="mat-elevation-z6">
+        <div class="header-nav">
+            <img src="../../assets/img/Untitled_logo_1_free-file (1).png" [style.height]="imageSize()"
+                [style.width]="imageSize()">
+            @if (!collapsed()) {<span class="header-title">{{title}}</span>}
+        </div>
         <mat-nav-list>
-            <span class="title-sidenav">Cencoe</span>
             <mat-divider></mat-divider>
+            <ng-container *ngFor="let menuItem of menuItems()">
 
-            <!-- Item Campaña -->
-            <mat-list-item class="item-list" routerLinkActive="active-link">
-                <button mat-button class="btn-list" routerLink="./campañas">
-                    <mat-icon class="icon">campaign</mat-icon>
-                    <span>Campañas</span>
-                </button>
-            </mat-list-item>
+                <!-- Elementos del menú -->
+                <mat-list-item [routerLink]="menuItem.route" routerLinkActive="active-link" #rla="routerLinkActive"
+                    [activated]="rla.isActive" class="item-list">
+                    <mat-icon class="icon" matListItemIcon
+                        [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined'">{{ menuItem.icon
+                        }}</mat-icon>
+                    <span class="item-label" matListItemTitle>{{ menuItem.label }}</span>
+                </mat-list-item>
 
-            <!-- Item Usuarios/Tipo documento -->
-            <mat-accordion class="accordion">
-
-                    <mat-expansion-panel class="accordion" (click)="toggleUsuariosPanel()" >
-                        <mat-expansion-panel-header class="panel-header">
-                            <mat-panel-title>
-                            <mat-icon class="icon">group</mat-icon>
-                                <span>Usuarios</span>
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-
-                        <mat-list-item class="item-list">
-                            <button mat-button routerLink="./usuarios">
-                                <mat-icon class="submenu-icon">person</mat-icon>
-                                <span>Ver Usuarios</span>
-                            </button>
-                        </mat-list-item>
-
-                        <mat-list-item class="item-list">
-                            <button mat-button routerLink="./tipo-documento">
-                                <mat-icon class="submenu-icon">another_icon</mat-icon>
-                                <span>Tipo Documento</span>
-                            </button>
-                        </mat-list-item>
-                      
-                    </mat-expansion-panel>
-            </mat-accordion>
-         
-
-
-
-
-            
-
-
-            <!-- Item Usuarios/Tipo documento -->
-            <mat-list-item class="item-list" routerLinkActive="active-link">
-                <button mat-button class="btn-list" routerLink="./proveedores">
-                    <mat-icon class="icon">group</mat-icon>
-                    <span>Proveedores</span>
-                </button>
-            </mat-list-item>
-            <mat-list-item class="item-list" routerLinkActive="active-link">
-                <button mat-button class="btn-list" routerLink="./tipo-documento">
-                    <mat-icon class="icon">group</mat-icon>
-                    <span class="tipo-documento">Tipo Documento</span>
-                </button>
-            </mat-list-item>
+            </ng-container>
         </mat-nav-list>
-    </mat-drawer>
-    <mat-drawer-content>
+    </mat-sidenav>
+    <mat-sidenav-content class="content" [style.margin-left]="widthMenuNav()">
+        <!-- Contenido de la página -->
         <router-outlet></router-outlet>
-    </mat-drawer-content>
-</mat-drawer-container>
+    </mat-sidenav-content>
+</mat-sidenav-container>

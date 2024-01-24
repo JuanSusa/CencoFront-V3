@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TipodocumentoComponent } from './tipodocumento.component';
+import { SidenavComponent } from './sidenav.component';
 
-describe('TipodocumentoComponent', () => {
-  let component: TipodocumentoComponent;
-  let fixture: ComponentFixture<TipodocumentoComponent>;
+describe('SidenavComponent', () => {
+  let component: SidenavComponent;
+  let fixture: ComponentFixture<SidenavComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TipodocumentoComponent]
+      imports: [SidenavComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(TipodocumentoComponent);
+    fixture = TestBed.createComponent(SidenavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

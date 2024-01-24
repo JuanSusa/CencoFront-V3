@@ -26,12 +26,22 @@ export const routes: Routes = [
             },
             {
                 path: 'tipo-documento',
-                loadComponent: () => import('./dashboard/pages/tipodocumento/tipodocumento.component').then((c) => c.TipodocumentoComponent)
+                loadComponent: () => import('./dashboard/pages/tipodocumento/list-tipoDocumento/list-tipodocumento.component').then((c) => c.TipodocumentoComponent)
 
             },
+            {
+                path: 'clientes',
+                loadComponent: () => import('./dashboard/pages/customers/customers.component').then((c) => c.CustomersComponent)
 
+            },
+            {
+                path: 'configuracion',
+                loadComponent: () => import('./settings/settings.component').then((c) => c.SettingsComponent)
+        
+            },
+            
         ]
-
+        
     },
     {
         path: '',

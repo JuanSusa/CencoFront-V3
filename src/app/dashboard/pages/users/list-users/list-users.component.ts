@@ -1,10 +1,10 @@
-import { UsersService, } from '../services/userService.service';
-import { IUser, userResponse } from '../models/user.model';
+import { UsersService, } from '../services/user-service.service';
+import { ApiResponse, IUser, } from '../../../../core/models/user.model';
 import { Component, OnInit, inject } from '@angular/core';
 import { AngularMaterialModule } from '../../../../angular-material/angular-material.module';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { adminTypePopUp } from '../../../main/main-types';
+import { adminTypePopUp } from '../../../../core/main/main-types';
 import { ManageUsersComponent } from '../manage-users/manage-users.component';
 import { RouterLink } from '@angular/router';
 
@@ -30,7 +30,7 @@ export class ListUsersComponent implements OnInit {
 
   ngOnInit(): void {
     this._serviceUser.getAllUsers().subscribe({
-      next: (data: userResponse) => {
+      next: (data: ApiResponse) => {
         this.user = data.data;
         this.isLoading = false; // Desactivar la bandera de carga
         console.log(data)
