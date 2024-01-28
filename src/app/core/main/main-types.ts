@@ -1,4 +1,4 @@
-export type adminTypePopUp = 'crear' | 'editar';//^1
+export type adminTypePopUp = 'crear' | 'editar' | 'ver';//^1
 export type adminPopUp<T> = {tipo: adminTypePopUp, campo?: T}//^2
 
 

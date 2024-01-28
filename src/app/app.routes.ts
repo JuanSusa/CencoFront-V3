@@ -5,9 +5,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
+        path: '',
+        redirectTo: '/inicio',
+        pathMatch: 'full'
+    },
+    {
         path: 'inicio',
         loadComponent: () => import('./dashboard/dashboard.component').then((c) => c.DashboardComponent),
-
+        
         children: [
             {
                 path: 'usuarios',
@@ -42,11 +47,6 @@ export const routes: Routes = [
             
         ]
         
-    },
-    {
-        path: '',
-        redirectTo: '/inicio',
-        pathMatch: 'full'
     },
     {
         path: '**',

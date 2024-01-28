@@ -82,7 +82,7 @@ mat-icon {
 
 mat-sidenav-container {
     height: calc(100vh - 50px);
-    background:#f4f4ef;
+    background:#f1f1f0;
 }
 
 mat-sidenav {
@@ -90,6 +90,7 @@ mat-sidenav {
     background: linear-gradient(-12deg, #29323c 20%, #738092 100%);
     border-radius: 5px;
     box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
+    
 }
 
 mat-sidenav,

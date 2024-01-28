@@ -19,59 +19,39 @@ import { MenuItem, menuItems } from './menu-data';
 })
 export class NavbarComponent {
 
-  title: string = 'Cencoe'
+  title: string = 'Cencoe';
+  sizeScreen: number = 790;
 
   menuItems = signal<MenuItem[]>(menuItems);
-  
   collapsed = signal(false);
   widthMenuNav = computed(() => this.collapsed() ? '65px' : '250px');
   imageSize = computed(() => this.collapsed() ? '32px' : '100px');
 
+  //^1
   @ViewChild('sidenav') sidenav!: MatSidenav;
-
-  ngAfterViewInit() {
-    // La referencia al sidenav está disponible aquí
-    console.log(this.sidenav);
-  }
-
-
-
-
-  // usuariosPanelOpened = false;
-  // panelOpenState = false;
-  // closedMenu = false;
-
-  // showSubmenu() {
-  //   this.usuariosPanelOpened = !this.usuariosPanelOpened;
-  // }
-
-  showMenu(){
+  showMenu() {
     this.sidenav.toggle();
   }
 
-  
+  @HostListener('window:resize', ['$event'])
+  changeWindowSize(event: Event) {
+   if(window.innerWidth < this.sizeScreen){
+    this.collapsed.update(value => true);
+   } 
+  }
 
-    // @ViewChild(MatDrawer) drawer!: MatDrawer;
-    // private screenSizeThreshold = 768; 
-
-    // @HostListener('window:resize', ['$event'])
-    // onResize(event: Event) {
-    //   if (window.innerWidth < this.screenSizeThreshold) {
-
-    //     this.drawer.close();
-    //   }
-    // }
-
+  menuOpenHover(){
+    this.collapsed.set(false);
   }
 
 
 
-/*COMENTARIOS
-^1 => mapeo sobre cada ruta, y de ahi se crea un nuevo array,
-        (...), operador de propagacion, crea un nuevo array que contiene la ruta principal y sus hijos
 
-^2 => aplana el array de arrays y lo convierte en un solo array
 
-^3 => filtra las rutas que no son nulas y las que tiene una propiedad 'path'
+}
 
-*/
+
+
+/**
+ * ^1 => Instancia del elemento MatSidenav para implementar el metodo toggle()
+ */

@@ -2,7 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { Observable, catchError, delay, map, throwError } from 'rxjs';
-import { ApiResponse  } from '../../../../core/models/user.model';
+import { ApiResponse, IUser  } from '../../../../core/models/user.model';
 import { computeMsgId } from '@angular/compiler';
 import { environment } from '../../../../../environments/environment';
 
@@ -16,6 +16,10 @@ export class UsersService {
 
   public getAllUsers(): Observable<ApiResponse>{
     return this._http.get<ApiResponse>(`${environment.api}/usuarios`)
+  }
+
+  public getUSerById(id : number): Observable<IUser>{
+    return this._http.get<IUser>(`${environment.api}/usuario/${id}`)
   }
 
   // public getAllUsers(): Observable<IUser[]> {

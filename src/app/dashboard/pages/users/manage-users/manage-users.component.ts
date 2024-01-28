@@ -4,6 +4,8 @@ import { adminPopUp } from '../../../../core/main/main-types';
 import { AngularMaterialModule } from '../../../../angular-material/angular-material.module';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { UsersService } from '../services/user-service.service';
+import { ApiResponse } from '../../../../core/models/user.model';
 
 @Component({
   selector: 'app-manage-users',
@@ -15,13 +17,14 @@ import { CommonModule } from '@angular/common';
 export class ManageUsersComponent implements OnInit {
 
   private readonly _matDialogRef = inject(MatDialogRef<ManageUsersComponent>);//^1
+  public _serviceUser = inject(UsersService);
   // public readonly userForm: FormGroup;//^2
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
-    private formBuilder :  FormBuilder
+    private formBuilder: FormBuilder
   ) { }
-  
+
   //^4
   userForm = this.formBuilder.group({
     userDocument: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11), Validators.pattern(/^\d+$/)]],
@@ -38,12 +41,17 @@ export class ManageUsersComponent implements OnInit {
   subtitulo: string = '';
   ngOnInit(): void {
     //^5
-    const tipo   = this.data;
-    this.titulo = this.data.tipo == 'crear' ? 'Crear nuevo usuario' : 'Editar Usuario';
+    const { tipo, campo } = this.data;
+    this.titulo =
+      this.data.tipo === 'crear' ? 'Crear nuevo usuario' : this.data.tipo === 'ver' ? 'Detalles del Usuario' : 'Editar Usuario';
     this.subtitulo =
-      this.data.tipo == 'crear'
-        ? 'Ingrese los datos para crear un nuevo usuario'
-        : 'Ingrese los nuevos datos del usuario';
+      this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo usuario' : this.data.tipo === 'ver' ? 'Detalles del Usuario' : 'Ingrese los nuevos datos del usuario';
+    debugger
+    if (tipo === 'ver') 
+      this._serviceUser
+        .getUSerById(campo!)
+        .subscribe((user) => console.log(user));
+    
   }
 
   public executionMesssage() {
@@ -62,18 +70,16 @@ export class ManageUsersComponent implements OnInit {
     return (control: AbstractControl): ValidationErrors | null => {//^7.2
       const value: string = control.value;//^7.3
       const passwordCriteria = /[a-zA-Z]+.*[0-9]+.*[A-Z]+/.test(value);//^7.4
-  
+
       if (!passwordCriteria) { //^7.5
 
         return { passwordCriteria: true };
       }
-  
-   
       return null;
     };
   }
 
-  
+
 }
 
 

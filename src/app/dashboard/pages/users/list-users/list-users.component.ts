@@ -29,10 +29,16 @@ export class ListUsersComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.getAllUser();
+  }
+  
+  
+  getAllUser(){
+    
     this._serviceUser.getAllUsers().subscribe({
       next: (data: ApiResponse) => {
-        this.user = data.data;
-        this.isLoading = false; // Desactivar la bandera de carga
+        this.user = data.data,
+        this.isLoading = false, // Desactivar la bandera de carga
         console.log(data)
       },
       error: (error) => {
@@ -41,6 +47,8 @@ export class ListUsersComponent implements OnInit {
       },
     })
   }
+
+
 
   manageUser(tipo: adminTypePopUp, userId?: number) {
     const modal = this._dialog.open(ManageUsersComponent, {

@@ -26,7 +26,7 @@
                     <mat-form-field>
                         <mat-label>Teléfono</mat-label>
                         <input matInput formControlName="userPhone" placeholder="Teléfono"
-                            (input)="onNumericInput($event)" />
+                            (input)="onNumericInput($event)"/>
                         <mat-error *ngIf="userForm.get('userPhone')?.hasError('required')">El número de teléfono es
                             obligatorio</mat-error>
                         <mat-error *ngIf="userForm.get('userPhone')?.hasError('minlength')">El número de teléfono debe
@@ -34,7 +34,6 @@
                         <mat-error *ngIf="userForm.get('userPhone')?.hasError('maxlength')">Máximo 10 dígitos</mat-error>
                         <mat-error *ngIf="userForm.get('userPhone')?.hasError('pattern')">El número de teléfono debe
                             contener solo dígitos</mat-error>
-
 
                     </mat-form-field>
 

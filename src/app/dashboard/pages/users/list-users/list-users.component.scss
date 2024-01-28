@@ -3,6 +3,10 @@
 
 }
 
+mat-icon{
+    color:#ff0844;
+}
+
 .content-table {
     margin-top: 1rem;
 }
@@ -22,3 +26,6 @@
     text-align: center;
 }
 
+:host .mat-progress-spinner {
+    color: #33f8ff; /* Cambia este valor al color deseado */
+  }
